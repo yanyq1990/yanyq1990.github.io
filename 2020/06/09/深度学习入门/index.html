@@ -143,7 +143,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    7.2k 字
+                    7.4k 字
                   </span>
                 
 
@@ -153,7 +153,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    80
+                    81
                      分钟
                   </span>
                 
@@ -396,7 +396,11 @@ decayed{\_}learning{\_}rate=learning{\_}rate*decayed</script><p>如下图所示�
 <p><strong>分割-Segmentation</strong>：分为实例的分割（Instance-level）和场景分割（Scene-level），解决“每一个像素属于哪个目标物或场景”的问题。</p>
 <p><img src="/imgs/deeplearning/ch8/8.1.1.png" srcset="/img/loading.gif" alt="图像识别四大类任务，图像来源于cs231n 2016课件Lecture 8"></p>
 <h4 id="3-1-1-手写数字识别-MNIST"><a href="#3-1-1-手写数字识别-MNIST" class="headerlink" title="3.1.1 手写数字识别 MNIST"></a>3.1.1 手写数字识别 MNIST</h4><p><img src="/imgs/deeplearning/mnist.jpeg" srcset="/img/loading.gif" alt=""></p>
-<h4 id="3-1-2-图像分割"><a href="#3-1-2-图像分割" class="headerlink" title="3.1.2 图像分割"></a>3.1.2 图像分割</h4><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/seg1.jpg" srcset="/img/loading.gif" alt=""></div><div class="group-image-wrap"><img src="/imgs/deeplearning/seg2.jpg" srcset="/img/loading.gif" alt=""></div></div></div>
+<h4 id="3-1-2-图像分割"><a href="#3-1-2-图像分割" class="headerlink" title="3.1.2 图像分割"></a>3.1.2 图像分割</h4><p>图像分割是预测图像中每一个像素所属的类别或者物体。基于深度学习的图像分割算法主要分为两类：</p>
+<h5 id="3-1-2-1-语义分割"><a href="#3-1-2-1-语义分割" class="headerlink" title="3.1.2.1 语义分割"></a>3.1.2.1 语义分割</h5><p>为图像中的每个像素分配一个类别，如把画面中的所有物体都指出它们各自的类别。</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/ch9/semantic-01.png" srcset="/img/loading.gif" alt=""></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/seg1.jpg" srcset="/img/loading.gif" alt=""></div><div class="group-image-wrap"><img src="/imgs/deeplearning/seg2.jpg" srcset="/img/loading.gif" alt=""></div></div></div>
+<h5 id="3-1-2-2-实例分割"><a href="#3-1-2-2-实例分割" class="headerlink" title="3.1.2.2 实例分割"></a>3.1.2.2 实例分割</h5><p>与语义分割不同，实例分割只对特定物体进行类别分配，这一点与目标检测有点相似，但目标检测输出的是边界框和类别，而实例分割输出的是掩膜（mask）和类别。</p>
+<p><img src="/imgs/deeplearning/ch9/Instance-01.png" srcset="/img/loading.gif" alt=""></p>
 <h4 id="3-1-3-目标检测"><a href="#3-1-3-目标检测" class="headerlink" title="3.1.3 目标检测"></a>3.1.3 目标检测</h4><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/det1.jpg" srcset="/img/loading.gif" alt=""></div><div class="group-image-wrap"><img src="/imgs/deeplearning/det3.png" srcset="/img/loading.gif" alt=""></div></div></div>
 <h4 id="3-1-4-人脸识别"><a href="#3-1-4-人脸识别" class="headerlink" title="3.1.4 人脸识别"></a>3.1.4 人脸识别</h4><h5 id="3-1-4-1-FaceNet"><a href="#3-1-4-1-FaceNet" class="headerlink" title="3.1.4.1 FaceNet"></a>3.1.4.1 FaceNet</h5><p><img src="/imgs/deeplearning/facenet.png" srcset="/img/loading.gif" alt=""></p>
 <h5 id="3-1-4-2-OpenFace"><a href="#3-1-4-2-OpenFace" class="headerlink" title="3.1.4.2 OpenFace"></a>3.1.4.2 OpenFace</h5><p><img src="/imgs/deeplearning/openface.png" srcset="/img/loading.gif" alt=""></p>
