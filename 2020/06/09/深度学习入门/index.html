@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="yanyq">
   <meta name="keywords" content="">
-  <title>深度学习入门 - 朝与暮</title>
+  <title>深度学习入门 - </title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
@@ -46,7 +46,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -143,7 +143,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    7.4k 字
+                    8.4k 字
                   </span>
                 
 
@@ -153,7 +153,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    81
+                    93
                      分钟
                   </span>
                 
@@ -163,6 +163,10 @@
             
           </div>
 
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
           
         </div>
       </div>
@@ -244,7 +248,7 @@ output = \left\{
 <p><strong>过拟合</strong>就是模型过度学习了训练集所有特性，导致模型认为训练集中的某些特性也是潜在测试实例具有的一般性质。从误差角度来说，过拟合时训练误差小但测试误差却很大。</p>
 <h3 id="1-8-损失函数-目标函数-与评价函数"><a href="#1-8-损失函数-目标函数-与评价函数" class="headerlink" title="1.8 损失函数(目标函数)与评价函数"></a>1.8 损失函数(目标函数)与评价函数</h3><p><strong>损失函数(loss)</strong>:通过最小化损失函数，使模型达到收敛状态，减少模型预测值的误差。</p>
 <p><strong>评价函数(metric)</strong>:与损失函数类似，用于评价训练完的模型准确度，不参与模型训练。</p>
-<div class="note note-info">
+<div class="note note-secondary">
             <p>需要说明的是，相同的任务，采用不同的模型训练时可能采用不同的损失函数，不同的损失函数的数值用来评价不同模型的优劣没有意义，为此，在比较不同模型的优劣时，应该采用一致的评判标准，即采用相同的metric。</p>
           </div>
 <h3 id="1-9-学习率"><a href="#1-9-学习率" class="headerlink" title="1.9 学习率"></a>1.9 学习率</h3><p> 在机器学习中，监督式学习通过定义一个模型，并根据训练集上的数据估计最优参数。梯度下降法是一个广泛被用来最小化模型误差的参数优化算法。梯度下降法通过多次迭代，并在每一步中最小化成本函数（cost 来估计模型的参数。学习率 (learning rate)，在迭代过程中会控制模型的学习进度。</p>
@@ -312,7 +316,7 @@ decayed{\_}learning{\_}rate=learning{\_}rate*decayed</script><p>如下图所示�
 </tbody>
 </table>
 </div>
-<div class="note note-info">
+<div class="note note-secondary">
             <p>$W_1\times H_1\times 3$对应原始图像或经过预处理的像素值矩阵，3对应RGB图像的通道;$K$表示卷积层中卷积核（滤波器）的个数;$W_2\times H_2$ 为池化后特征图的尺度，在全局池化中尺度对应$1\times 1$;$(W_2 \cdot H_2 \cdot K)$是将多维特征压缩到1维之后的大小，$C$对应的则是图像类别个数。</p>
           </div>
 <h3 id="2-1-输入层"><a href="#2-1-输入层" class="headerlink" title="2.1 输入层"></a>2.1 输入层</h3><p>输入层(Input Layer)通常是输入卷积神经网络的原始数据或经过预处理的数据，可以是图像识别领域中原始三维的多彩图像，也可以是音频识别领域中经过傅利叶变换的二维波形数据，甚至是自然语言处理中一维表示的句子向量。以图像分类任务为例，输入层输入的图像一般包含RGB三个通道，是一个由长宽分别为$H$和$W$组成的3维像素值矩阵$H\times W \times 3$，卷积网络会将输入层的数据传递到一系列卷积、池化等操作进行特征提取和转化，最终由全连接层对特征进行汇总和结果输出。根据计算能力、存储大小和模型结构的不同，卷积神经网络每次可以批量处理的图像个数不尽相同，若指定输入层接收到的图像个数为$N$，则输入层的输出数据为$N\times H\times W\times 3$。</p>
@@ -364,10 +368,13 @@ decayed{\_}learning{\_}rate=learning{\_}rate*decayed</script><p>如下图所示�
 </tbody>
 </table>
 </div>
-<div class="note note-info">
-            <p>卷积操作维度变换公式：</p><script type="math/tex; mode=display">O_d =\begin{cases} \lceil \frac{(I_d - k_{size})+ 1)}{s}\rceil ,& \text{padding=VALID}\\ \lceil \frac{I_d}{s}\rceil,&\text{padding=SAME} \end{cases}</script><p>其中，$I_d$为输入维度，$O_d$为输出维度，$k_{size}$为卷积核大小，$s$为步长</p>
+<div class="note note-secondary">
+            <p><strong>卷积操作维度变换公式:</strong></p><script type="math/tex; mode=display">O_d =\begin{cases} \lceil \frac{(I_d - k_{size})+ 1)}{s}\rceil ,& \text{padding=VALID}\\ \lceil \frac{I_d}{s}\rceil,&\text{padding=SAME} \end{cases}</script><p>其中，$I_d$为输入维度，$O_d$为输出维度，$k_{size}$为卷积核大小，$s$为步长</p>
           </div>
-<h3 id="2-3-激活层"><a href="#2-3-激活层" class="headerlink" title="2.3 激活层"></a>2.3 激活层</h3><p>激活层(Activation Layer)负责对卷积层抽取的特征进行激活，由于卷积操作是由输入矩阵与卷积核矩阵进行相差的线性变化关系，需要激活层对其进行非线性的映射。激活层主要由激活函数组成，即在卷积层输出结果的基础上嵌套一个非线性函数，让输出的特征图具有非线性关系。卷积网络中通常采用ReLU来充当激活函数（还包括tanh和sigmoid等）。</p>
+<h3 id="2-3-激活层"><a href="#2-3-激活层" class="headerlink" title="2.3 激活层"></a>2.3 激活层</h3><p>激活层(Activation Layer)负责对卷积层抽取的特征进行激活，由于卷积操作是由输入矩阵与卷积核矩阵进行相乘的线性变化关系，需要激活层对其进行非线性的映射。激活层主要由激活函数组成，即在卷积层输出结果的基础上嵌套一个非线性函数，让输出的特征图具有非线性关系。</p>
+<div class="note note-secondary">
+            <p><strong>使用非线性函数作为激活函数的理由:</strong></p><ul><li>假若网络中全部是线性部件，那么线性的组合还是线性，与单独一个线性分类器无异。这样就做不到用非线性来逼近任意函数。</li><li>使用非线性激活函数 ，以便使网络更加强大，增加它的能力，使它可以学习复杂的事物，复杂的表单数据，以及表示输入输出之间非线性的复杂的任意函数映射。使用非线性激活函数，能够从输入输出之间生成非线性映射。</li></ul>
+          </div>
 <h4 id="2-3-1-sigmoid-激活函数"><a href="#2-3-1-sigmoid-激活函数" class="headerlink" title="2.3.1 sigmoid 激活函数"></a>2.3.1 sigmoid 激活函数</h4><p>函数的定义为：$ f(x) = \frac{1}{1 + e^{-x}} $，其值域为 $ (0,1) $。</p>
 <p>函数图像如下：</p>
 <p><img src="/imgs/deeplearning/ch3/3-26.png" srcset="/img/loading.gif" alt=""></p>
@@ -406,11 +413,12 @@ decayed{\_}learning{\_}rate=learning{\_}rate*decayed</script><p>如下图所示�
 <h5 id="3-1-4-2-OpenFace"><a href="#3-1-4-2-OpenFace" class="headerlink" title="3.1.4.2 OpenFace"></a>3.1.4.2 OpenFace</h5><p><img src="/imgs/deeplearning/openface.png" srcset="/img/loading.gif" alt=""></p>
 <h5 id="3-1-4-3-VRN"><a href="#3-1-4-3-VRN" class="headerlink" title="3.1.4.3 VRN"></a>3.1.4.3 VRN</h5><p><img src="/imgs/deeplearning/vrn.png" srcset="/img/loading.gif" alt=""></p>
 <h3 id="3-2-立体匹配-Stereo-Match"><a href="#3-2-立体匹配-Stereo-Match" class="headerlink" title="3.2 立体匹配 Stereo Match"></a>3.2 立体匹配 Stereo Match</h3><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/stereo/Adirondack_left.png" srcset="/img/loading.gif" alt=""></div><div class="group-image-wrap"><img src="/imgs/deeplearning/stereo/Adirondack.png" srcset="/img/loading.gif" alt=""></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/stereo/ArtL_left.png" srcset="/img/loading.gif" alt=""></div><div class="group-image-wrap"><img src="/imgs/deeplearning/stereo/ArtL.png" srcset="/img/loading.gif" alt=""></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/stereo/Motorcycle_left.png" srcset="/img/loading.gif" alt=""></div><div class="group-image-wrap"><img src="/imgs/deeplearning/stereo/Motorcycle.png" srcset="/img/loading.gif" alt=""></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/stereo/Recycle_left.png" srcset="/img/loading.gif" alt=""></div><div class="group-image-wrap"><img src="/imgs/deeplearning/stereo/Recycle.png" srcset="/img/loading.gif" alt=""></div></div></div>
-<h3 id="3-3-图像复原-Image-Restoration"><a href="#3-3-图像复原-Image-Restoration" class="headerlink" title="3.3 图像复原 Image Restoration"></a>3.3 图像复原 Image Restoration</h3><h4 id="3-3-1-denoising"><a href="#3-3-1-denoising" class="headerlink" title="3.3.1 denoising"></a>3.3.1 denoising</h4><p><img src="/imgs/deeplearning/denoising.png" srcset="/img/loading.gif" alt=""></p>
-<h4 id="3-3-2-super-resolution"><a href="#3-3-2-super-resolution" class="headerlink" title="3.3.2 super resolution"></a>3.3.2 super resolution</h4><p><img src="/imgs/deeplearning/super-resolution.png" srcset="/img/loading.gif" alt=""></p>
-<h4 id="3-3-3-inpainting"><a href="#3-3-3-inpainting" class="headerlink" title="3.3.3 inpainting"></a>3.3.3 inpainting</h4><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/640.jpeg" srcset="/img/loading.gif" alt=""></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/inpainting.jpeg" srcset="/img/loading.gif" alt=""></div></div></div>
-<h3 id="3-4-其他"><a href="#3-4-其他" class="headerlink" title="3.4 其他"></a>3.4 其他</h3><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/rmvsnet1.png" srcset="/img/loading.gif" alt=""></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/rmvsnet2.png" srcset="/img/loading.gif" alt=""></div></div></div>
-<h2 id="四、深度学习框架"><a href="#四、深度学习框架" class="headerlink" title="四、深度学习框架"></a>四、深度学习框架</h2><div class="table-container">
+<h3 id="3-3-图像复原-Image-Restoration"><a href="#3-3-图像复原-Image-Restoration" class="headerlink" title="3.3 图像复原 Image Restoration"></a>3.3 图像复原 Image Restoration</h3><h4 id="3-3-1-图像去噪-Denoising"><a href="#3-3-1-图像去噪-Denoising" class="headerlink" title="3.3.1 图像去噪 Denoising"></a>3.3.1 图像去噪 Denoising</h4><p><img src="/imgs/deeplearning/denoising.png" srcset="/img/loading.gif" alt=""></p>
+<h4 id="3-3-2-图像超分-Super-resolution"><a href="#3-3-2-图像超分-Super-resolution" class="headerlink" title="3.3.2 图像超分 Super resolution"></a>3.3.2 图像超分 Super resolution</h4><p><img src="/imgs/deeplearning/super-resolution.png" srcset="/img/loading.gif" alt=""></p>
+<h4 id="3-3-3-图像修复-Inpainting"><a href="#3-3-3-图像修复-Inpainting" class="headerlink" title="3.3.3 图像修复 Inpainting"></a>3.3.3 图像修复 Inpainting</h4><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/640.jpeg" srcset="/img/loading.gif" alt=""></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/inpainting.jpeg" srcset="/img/loading.gif" alt=""></div></div></div>
+<h3 id="3-4-三维重建-Reconstruction"><a href="#3-4-三维重建-Reconstruction" class="headerlink" title="3.4 三维重建 Reconstruction"></a>3.4 三维重建 Reconstruction</h3><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/rmvsnet1.png" srcset="/img/loading.gif" alt=""></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/rmvsnet2.png" srcset="/img/loading.gif" alt=""></div></div></div>
+<h3 id="3-5-风格转移-Style-Transfer"><a href="#3-5-风格转移-Style-Transfer" class="headerlink" title="3.5 风格转移 Style Transfer"></a>3.5 风格转移 Style Transfer</h3><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/styletransfer1.png" srcset="/img/loading.gif" alt=""></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/styletransfer2.png" srcset="/img/loading.gif" alt=""></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/imgs/deeplearning/styletransfer3.png" srcset="/img/loading.gif" alt=""></div></div></div>
+<h2 id="四、深度学习工具"><a href="#四、深度学习工具" class="headerlink" title="四、深度学习工具"></a>四、深度学习工具</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -527,6 +535,35 @@ decayed{\_}learning{\_}rate=learning{\_}rate*decayed</script><p>如下图所示�
 <li>✗ 文档质量参差不齐；</li>
 <li>✗ 一般需要自己编写训练代码（即插即用相对较少）。</li>
 </ul>
+<h3 id="4-2-Docker"><a href="#4-2-Docker" class="headerlink" title="4.2 Docker"></a>4.2 Docker</h3><h4 id="4-2-1-虚拟机与容器"><a href="#4-2-1-虚拟机与容器" class="headerlink" title="4.2.1 虚拟机与容器"></a>4.2.1 虚拟机与容器</h4><p>虚拟机（virtual machine）可以在一种操作系统里面运行另一种操作系统，比如在 Windows 系统里面运行 Linux 系统。应用程序对此毫无感知，因为虚拟机看上去跟真实系统一模一样，而对于底层系统来说，虚拟机就是一个普通文件，不需要了就删掉，对其他部分毫无影响。</p>
+<p>但是，虚拟机有几个缺点:</p>
+<ul>
+<li><strong>资源占用多。</strong>虚拟机会独占一部分内存和硬盘空间。它运行的时候，其他程序就不能使用这些资源了。哪怕虚拟机里面的应用程序，真正使用的内存只有 1MB，虚拟机依然需要几百 MB 的内存才能运行。</li>
+<li><strong>冗余步骤多。</strong>虚拟机是完整的操作系统，一些系统级别的操作步骤，往往无法跳过，比如用户登录。</li>
+<li><strong>启动慢。</strong>启动操作系统需要多久，启动虚拟机就需要多久。可能要等几分钟，应用程序才能真正运行。</li>
+</ul>
+<p>由于虚拟机存在这些缺点，Linux 发展出了另一种虚拟化技术：Linux 容器（Linux Containers，缩写为 LXC）。</p>
+<p>Linux 容器不是模拟一个完整的操作系统，而是对进程进行隔离。或者说，在正常进程的外面套了一个保护层。对于容器里面的进程来说，它接触到的各种资源都是虚拟的，从而实现与底层系统的隔离。</p>
+<p>由于容器是进程级别的，相比虚拟机有很多优势。</p>
+<ul>
+<li><strong>启动快。</strong>容器里面的应用，直接就是底层系统的一个进程，而不是虚拟机内部的进程。所以，启动容器相当于启动本机的一个进程，而不是启动一个操作系统，速度就快很多。</li>
+<li><strong>资源占用少。</strong>容器只占用需要的资源，不占用那些没有用到的资源；虚拟机由于是完整的操作系统，不可避免要占用所有资源。另外，多个容器可以共享资源，虚拟机都是独享资源。</li>
+<li><strong>体积小。</strong>容器只要包含用到的组件即可，而虚拟机是整个操作系统的打包，所以容器文件比虚拟机文件要小很多。</li>
+</ul>
+<p>总之，容器有点像轻量级的虚拟机，能够提供虚拟化的环境，但是成本开销小得多。</p>
+<h4 id="4-2-2-Docker及其使用"><a href="#4-2-2-Docker及其使用" class="headerlink" title="4.2.2 Docker及其使用"></a>4.2.2 Docker及其使用</h4><p>Docker 将应用程序与该程序的依赖，打包在一个文件(<strong>镜像</strong>)里面。运行这个文件，就会生成一个虚拟<strong>容器</strong>。程序在这个虚拟容器里运行，就好像在真实的物理机上运行一样。有了 Docker，就不用担心环境问题。</p>
+<h5 id="4-2-2-1-docker的用途"><a href="#4-2-2-1-docker的用途" class="headerlink" title="4.2.2.1 docker的用途"></a>4.2.2.1 docker的用途</h5><p>Docker 的主要用途，目前有三大类。</p>
+<ul>
+<li><strong>提供一次性的环境。</strong>比如，本地测试他人的软件、持续集成的时候提供单元测试和构建的环境。</li>
+<li><strong>提供弹性的云服务。</strong>因为 Docker 容器可以随开随关，很适合动态扩容和缩容。</li>
+<li><strong>组建微服务架构。</strong>通过多个容器，一台机器可以跑多个服务，因此在本机就可以模拟出微服务架构。</li>
+</ul>
+<h5 id="4-2-2-2-docker使用"><a href="#4-2-2-2-docker使用" class="headerlink" title="4.2.2.2 docker使用"></a>4.2.2.2 docker使用</h5><p><strong>查看镜像(Image)</strong><br><pre><code class="hljs plain">docker images</code></pre></p>
+<p><strong>创建并启动容器(container)</strong><br><pre><code class="hljs plain">docker run -it -v VOLUME --name NAME IMAGE</code></pre></p>
+<p><strong>停止容器</strong><br><pre><code class="hljs plain">docker stop CONTAINER</code></pre></p>
+<p><strong>启动容器</strong><br><pre><code class="hljs plain">docker start CONTAINER</code></pre></p>
+<p><strong>进入容器</strong><br><pre><code class="hljs plain">docker attach CONTAINER</code></pre><br><strong>删除容器</strong><br><pre><code class="hljs plain">docker rm CONTAINER</code></pre></p>
+<p><strong>删除镜像</strong><br><pre><code class="hljs plain">docker rmi IMAGE</code></pre></p>
 
             </article>
             <hr>
@@ -546,12 +583,6 @@ decayed{\_}learning{\_}rate=learning{\_}rate*decayed</script><p>如下图所示�
                   </div>
                   <div class="post-next col-6">
                     
-                    
-                      <a href="/2020/06/09/hello-world/">
-                        <span class="hidden-mobile">Hello World</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </div>
                 </div>
