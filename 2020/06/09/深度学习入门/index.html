@@ -143,7 +143,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    8.4k 字
+                    9.6k 字
                   </span>
                 
 
@@ -153,7 +153,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    93
+                    107
                      分钟
                   </span>
                 
@@ -234,14 +234,18 @@ output = \left\{
 <p><strong>向量（vector）</strong><br>一个向量表示一组有序排列的数。通过次序中的索引，我们可以确定每个单独的数。通常我们赋予向量粗体的小写变量名称，比如xx。向量中的元素可以通过带脚标的斜体表示。向量$X$的第一个元素是$X_1$，第二个元素是$X_2$，以此类推。我们也会注明存储在向量中的元素的类型（实数、虚数等）。</p>
 <p><strong>矩阵（matrix）</strong><br>矩阵是具有相同特征和纬度的对象的集合，表现为一张二维数据表。其意义是一个对象表示为矩阵中的一行，一个特征表示为矩阵中的一列，每个特征都有数值型的取值。通常会赋予矩阵粗体的大写变量名称，比如$A$。</p>
 <p><strong>张量（tensor）</strong><br>在某些情况下，我们会讨论坐标超过两维的数组。一般地，一个数组中的元素分布在若干维坐标的规则网格中，我们将其称之为张量。使用 $A$ 来表示张量“A”。张量$A$中坐标为$(i,j,k)$的元素记作$A_{(i,j,k)}$。 </p>
-<h3 id="1-5-训练集、验证集与测试集"><a href="#1-5-训练集、验证集与测试集" class="headerlink" title="1.5 训练集、验证集与测试集"></a>1.5 训练集、验证集与测试集</h3><p><strong>训练集</strong>:指的是用于训练的样本集合,主要用来训练神经网络中的参数.</p>
-<p><strong>验证集</strong>:用于验证模型性能的样本集合.不同神经网络在训练集上训练结束后,通过验证集来比较判断各个模型的性能.这里的不同模型主要是指对应不同超参数的神经网络,也可以指完全不同结构的神经网络.</p>
-<p><strong>测试集</strong>:对于训练完成的神经网络,测试集用于客观的评价神经网络的性能.</p>
+<h3 id="1-5-训练集、验证集与测试集"><a href="#1-5-训练集、验证集与测试集" class="headerlink" title="1.5 训练集、验证集与测试集"></a>1.5 训练集、验证集与测试集</h3><p><strong>训练、验证、测试集</strong>是非常重要的三个内容。</p>
+<ul>
+<li><strong>训练集</strong>：用于模型训练的样本集合,主要用来训练神经网络中的参数,样本占用量是最大的;</li>
+<li><strong>验证集</strong>：用于训练过程中的模型性能评价，跟着性能评价才能更好的调参；</li>
+<li><strong>测试集</strong>：用于最终模型的一次最终评价，直接反应了模型的性能。</li>
+</ul>
 <p><strong>训练集、验证集和测试集的划分</strong></p>
 <ul>
-<li>对于小规模样本集,常用的非配比例是trianing /validation/test 6:2:2.例如共有10000个样本,则训练集分为6000个样本,验证集为2000样本,测试集为2000样本.</li>
-<li>对于大规模样本集,则validation/test的比例会减小很多,因为验证(比较)模型性能和测试模型性能一定的样本规模就足够了.例如共有1000000个样本,则训练集分为9980000个样本,验证集分为10000个样本,测试集分为10000个样本.</li>
+<li>在样本量有限的情况下，有时候会把验证集和测试集合并。实际中，若划分为三类，那么<strong>训练集:验证集:测试集=6:2:2</strong>；若是两类，则<strong>训练集：验证集=7:3</strong>。这里需要主要在数据量不够多的情况，验证集和测试集需要占的数据比例比较多，以充分了解模型的泛化性。</li>
+<li>在海量样本的情况下，这种情况在目前深度学习中会比较常见。此时由于数据量巨大，我们不需要将过多的数据用于验证和测试集。例如拥有1百万样本时，我们按<strong>训练集:验证集:测试集=98:1:1</strong>的比例划分，1%的验证和1%的测试集都已经拥有了1万个样本。这已足够验证模型性能了。</li>
 </ul>
+<p>此外，三个数据集的划分不是一次就可以的，若调试过程中发现，三者得到的性能评价差异很大时，可以重新划分以确定是数据集划分的问题导致还是由模型本身导致的。其次，若评价指标发生变化，而导致模型性能差异在三者上很大时，同样可重新划分确认排除数据问题，以方便进一步的优化。</p>
 <h3 id="1-6-训练误差与测试误差-泛化误差"><a href="#1-6-训练误差与测试误差-泛化误差" class="headerlink" title="1.6 训练误差与测试误差(泛化误差)"></a>1.6 训练误差与测试误差(泛化误差)</h3><p><strong>训练误差</strong>:模型在训练集上的误差平均值，度量了模型对训练集拟合的情况。训练误差大说明对训练集特性学习得不够，训练误差太小说明过度学习了训练集特性，容易发生过拟合。</p>
 <p><strong>测试误差</strong>:模型在测试集上的误差平均值，度量了模型的泛化能力。在实践中，希望测试误差越小越好。</p>
 <h3 id="1-7-欠拟合与过拟合"><a href="#1-7-欠拟合与过拟合" class="headerlink" title="1.7 欠拟合与过拟合"></a>1.7 欠拟合与过拟合</h3><p><strong>欠拟合</strong>就是说模型尚未学习完整训练集实例的普适特性。从误差角度来说，欠拟合时训练误差大，测试误差也大。</p>
@@ -307,6 +311,11 @@ decayed{\_}learning{\_}rate=learning{\_}rate*decayed</script><p>如下图所示�
 <td style="text-align:center">池化层</td>
 <td style="text-align:center">$W_2\times H_2\times K$</td>
 <td style="text-align:left">进一步筛选特征，可以有效减少后续网络层次所需的参数量</td>
+</tr>
+<tr>
+<td style="text-align:center">归一化层</td>
+<td style="text-align:center">$W_2\times H_2\times K$</td>
+<td style="text-align:left">对输入数据或特征进行归一化处理</td>
 </tr>
 <tr>
 <td style="text-align:center">全连接层</td>
@@ -395,7 +404,41 @@ decayed{\_}learning{\_}rate=learning{\_}rate*decayed</script><p>如下图所示�
 <p>Softmax 多用于多分类神经网络输出。</p>
 <h3 id="2-4-池化层-汇合层"><a href="#2-4-池化层-汇合层" class="headerlink" title="2.4 池化层(汇合层)"></a>2.4 池化层(汇合层)</h3><p>池化层又称为降采样层(Downsampling Layer)，作用是对感受域内的特征进行筛选，提取区域内最具代表性的特征，能够有效地降低输出特征尺度，进而减少模型所需要的参数量。按操作类型通常分为最大池化(Max Pooling)、平均池化(Average Pooling)和求和池化(Sum Pooling)，它们分别提取感受域内最大、平均与总和的特征值作为输出，最常用的是最大池化。</p>
 <p><img src="/imgs/deeplearning/ch5/5.27.3.png" srcset="/img/loading.gif" alt="image"></p>
-<h3 id="2-5-全连接层"><a href="#2-5-全连接层" class="headerlink" title="2.5 全连接层"></a>2.5 全连接层</h3><p>全连接层(Full Connected Layer)负责对卷积神经网络学习提取到的特征进行汇总，将多维的特征输入映射为二维的特征输出，高维表示样本批次，低位常常对应任务目标。</p>
+<h3 id="2-5-归一化层"><a href="#2-5-归一化层" class="headerlink" title="2.5 归一化层"></a>2.5 归一化层</h3><p>归一化层，目前主要有这几个方法:</p>
+<ul>
+<li><a href="https://arxiv.org/pdf/1502.03167.pdf" target="_blank" rel="noopener">Batch Normalization（2015年）</a></li>
+<li><a href="https://arxiv.org/pdf/1607.06450v1.pdf" target="_blank" rel="noopener">Layer Normalization（2016年）</a></li>
+<li><a href="https://arxiv.org/pdf/1607.08022.pdf" target="_blank" rel="noopener">Instance Normalization（2017年）</a></li>
+<li><a href="https://arxiv.org/pdf/1803.08494.pdf" target="_blank" rel="noopener">Group Normalization（2018年）</a></li>
+<li><a href="http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf" target="_blank" rel="noopener">Local Response Normalization</a></li>
+<li><a href="https://arxiv.org/pdf/1806.10779.pdf" target="_blank" rel="noopener">Switchable Normalization（2018年）</a></li>
+</ul>
+<p><img src="/imgs/deeplearning/norm.png" srcset="/img/loading.gif" alt=""></p>
+<h4 id="2-5-1-Batch-Normalization"><a href="#2-5-1-Batch-Normalization" class="headerlink" title="2.5.1 Batch Normalization"></a>2.5.1 Batch Normalization</h4><p>首先，在进行训练之前，一般要对数据做归一化，使其分布一致，但是在深度神经网络训练过程中，通常以送入网络的每一个batch训练，这样每个batch具有不同的分布；此外，为了解决internal covarivate shift问题，这个问题定义是随着batch normalizaiton这篇论文提出的，在训练过程中，数据分布会发生变化，对下一层网络的学习带来困难。</p>
+<p>所以batch normalization就是强行将数据拉回到均值为0，方差为1的正太分布上，这样不仅数据分布一致，而且避免发生梯度消失。</p>
+<p>此外，internal corvariate shift和covariate shift是两回事，前者是网络内部，后者是针对输入数据，比如我们在训练数据前做归一化等预处理操作。</p>
+<p>算法过程：</p>
+<ul>
+<li>沿着通道计算每个batch的均值$\mu$</li>
+<li>沿着通道计算每个batch的方差$\sigma^2$</li>
+<li>对$x$做归一化，$x’=\frac{\left(x-\mu\right)}{\sqrt{\left(\sigma^2+\varepsilon\right)}}$</li>
+<li>加入缩放和平移变量γ和β ,归一化后的值，$y=\gamma x’+\beta$</li>
+</ul>
+<h4 id="2-5-2-Layer-Normalization"><a href="#2-5-2-Layer-Normalization" class="headerlink" title="2.5.2 Layer Normalization"></a>2.5.2 Layer Normalization</h4><p>与Batch Normalization不同，Layer Normalization是针对深度网络的某一层的所有神经元的输入按以下公式进行normalize操作。</p>
+<script type="math/tex; mode=display">\mu^l=\frac{1}{H}\sum^H_{i=1}a_i^l</script><script type="math/tex; mode=display">\sigma^l=\sqrt{\frac{1}{H}\sum^H_{i=1}\left(a_i^l-\mu^l\right)^2}</script><p>Batch Normalization与Layer Normalization的区别在于：</p>
+<p>Layer Normalization中同层神经元输入拥有相同的均值和方差，不同的输入样本有不同的均值和方差；<br>Batch Normalization中则针对不同神经元输入计算均值和方差，同一个batch中的输入拥有相同的均值和方差。</p>
+<p>所以，Layer Normalization不依赖于batch的大小和输入sequence的深度，因此可以用于batchsize为1和RNN中对边长的输入sequence的normalize操作。</p>
+<p>Layer Normalization用于RNN效果比较明显，但是在CNN上，不如Batch Normalization。</p>
+<h4 id="2-5-3-Instance-Normalization"><a href="#2-5-3-Instance-Normalization" class="headerlink" title="2.5.3 Instance Normalization"></a>2.5.3 Instance Normalization</h4><p>Batch Normalization注重对每个batch进行归一化，保证数据分布一致，因为判别模型中结果取决于数据整体分布。</p>
+<p>但是图像风格化中，生成结果主要依赖于某个图像实例，所以对整个batch归一化不适合图像风格化中，因而对HW做归一化。可以加速模型收敛，并且保持每个图像实例之间的独立。</p>
+<h4 id="2-5-4-Group-Normalization"><a href="#2-5-4-Group-Normalization" class="headerlink" title="2.5.4 Group Normalization"></a>2.5.4 Group Normalization</h4><p>主要是针对Batch Normalization对小batchsize效果差，Group Normalization将channel方向分group，然后每个group内做归一化，算$\lfloor \frac{C}{G} \rfloor \times H \times W$的均值，这样与batchsize无关，不受其约束。</p>
+<h4 id="2-5-5-Local-Response-Normalization"><a href="#2-5-5-Local-Response-Normalization" class="headerlink" title="2.5.5 Local Response Normalization"></a>2.5.5 Local Response Normalization</h4><p>局部响应归一化原理是仿造生物学上活跃的神经元对相邻神经元的抑制现象（侧抑制），然后根据论文有公式如下:</p>
+<script type="math/tex; mode=display">b_{x,y}^i=\frac{a_{x,y}^i}{\left(k+\alpha\sum_{j=max\left(0,i-\frac{n}{2}\right)}^{min\left(N-1,i+\frac{n}{2}\right)}\left(a_{x,y}^j\right)\right)^\beta}</script><h4 id="2-5-6-Switchable-Normalization"><a href="#2-5-6-Switchable-Normalization" class="headerlink" title="2.5.6 Switchable Normalization"></a>2.5.6 Switchable Normalization</h4><ul>
+<li>归一化虽然提高模型泛化能力，然而归一化层的操作是人工设计的。在实际应用中，解决不同的问题原则上需要设计不同的归一化操作，并没有一个通用的归一化方法能够解决所有应用问题；</li>
+<li>一个深度神经网络往往包含几十个归一化层，通常这些归一化层都使用同样的归一化操作，因为手工为每一个归一化层设计操作需要进行大量的实验。</li>
+</ul>
+<p>因此作者提出自适配归一化方法——Switchable Normalization来解决上述问题。与强化学习不同，Switchable Normalization使用可微分学习，为一个深度网络中的每一个归一化层确定合适的归一化操作。</p>
+<h3 id="2-6-全连接层"><a href="#2-6-全连接层" class="headerlink" title="2.6 全连接层"></a>2.6 全连接层</h3><p>全连接层(Full Connected Layer)负责对卷积神经网络学习提取到的特征进行汇总，将多维的特征输入映射为二维的特征输出，高维表示样本批次，低位常常对应任务目标。</p>
 <h2 id="三、深度学习在计算机视觉中的应用"><a href="#三、深度学习在计算机视觉中的应用" class="headerlink" title="三、深度学习在计算机视觉中的应用"></a>三、深度学习在计算机视觉中的应用</h2><h3 id="3-1-图像识别"><a href="#3-1-图像识别" class="headerlink" title="3.1 图像识别"></a>3.1 图像识别</h3><p>计算机视觉中关于图像识别有四大类任务：</p>
 <p><strong>分类-Classification</strong>：解决“是什么？”的问题，即给定一张图片或一段视频判断里面包含什么类别的目标。</p>
 <p><strong>定位-Location</strong>：解决“在哪里？”的问题，即定位出这个目标的的位置。</p>
